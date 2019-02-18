@@ -51,13 +51,14 @@ namespace Treehouse.FitnessFrog.Controllers
         [HttpPost]
         public ActionResult Add(DateTime? date, int? activityId, double? duration, Entry.IntensityLevel? intensity, bool? exclude, string notes)
         {
-
-            ViewBag.Date = ModelState["Date"].Value.AttemptedValue;
-            ViewBag.ActivityId = ModelState["ActivityId"].Value.AttemptedValue;
-            ViewBag.Duration = ModelState["Duration"].Value.AttemptedValue;
-            ViewBag.Intensity = ModelState["Intensity"].Value.AttemptedValue;
-            ViewBag.Exclude = ModelState["Exclude"].Value.AttemptedValue;
-            ViewBag.Notes = ModelState["Notes"].Value.AttemptedValue;
+            // We can delete the following code because we are using html helper method to render our form field input or text area elements
+            // internally use ModelState to get the user's attempted values.
+            //ViewBag.Date = ModelState["Date"].Value.AttemptedValue;
+            //ViewBag.ActivityId = ModelState["ActivityId"].Value.AttemptedValue;
+            //ViewBag.Duration = ModelState["Duration"].Value.AttemptedValue;
+            //ViewBag.Intensity = ModelState["Intensity"].Value.AttemptedValue;
+            //ViewBag.Exclude = ModelState["Exclude"].Value.AttemptedValue;
+            //ViewBag.Notes = ModelState["Notes"].Value.AttemptedValue;
 
             return View();
         }
