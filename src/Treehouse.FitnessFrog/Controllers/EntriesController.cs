@@ -41,6 +41,10 @@ namespace Treehouse.FitnessFrog.Controllers
 
         public ActionResult Add()
         {
+            var entry = new Entry()
+            {
+                Date = DateTime.Today
+            };
             return View();
         }
 
@@ -49,7 +53,9 @@ namespace Treehouse.FitnessFrog.Controllers
         // We can put them into the same line to keep code clean
         //[ActionName("Add"), HttpPost]
         [HttpPost]
-        public ActionResult Add(DateTime? date, int? activityId, double? duration, Entry.IntensityLevel? intensity, bool? exclude, string notes)
+        //public ActionResult Add(DateTime? date, int? activityId, double? duration, Entry.IntensityLevel? intensity, bool? exclude, string notes)
+        //{
+        public ActionResult Add(Entry entry)
         {
             // We can delete the following code because we are using html helper method to render our form field input or text area elements
             // internally use ModelState to get the user's attempted values.
@@ -60,7 +66,15 @@ namespace Treehouse.FitnessFrog.Controllers
             //ViewBag.Exclude = ModelState["Exclude"].Value.AttemptedValue;
             //ViewBag.Notes = ModelState["Notes"].Value.AttemptedValue;
 
-            return View();
+            if (ModelState.IsValid)
+            {
+                _entriesRepository.AddEntry(entry);
+
+                // TODO Display the Entries list page
+
+            }
+
+            return View(entry);
         }
 
         public ActionResult Edit(int? id)
